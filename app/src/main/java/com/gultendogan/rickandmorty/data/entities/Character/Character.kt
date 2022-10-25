@@ -1,6 +1,7 @@
 package com.gultendogan.rickandmorty.data.entities.Character
 
 import com.google.gson.annotations.SerializedName
+import com.gultendogan.rickandmorty.domain.uimodel.CharacterUIModel
 
 data class Character(
     @SerializedName("created")
@@ -28,3 +29,9 @@ data class Character(
     @SerializedName("url")
     val url: String
 )
+
+fun Character.toCharacterUIModel(): CharacterUIModel {
+    return CharacterUIModel(
+        id, name, status, gender, species, created, episode, image, location, origin, url
+    )
+}

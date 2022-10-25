@@ -10,4 +10,5 @@
         android:name="com.gultendogan.rickandmorty.ui.character.CharactersFragment"
         android:label="fragment_characters"
         tools:layout="@layout/fragment_characters" />
+
 </navigation>

@@ -1,6 +1,6 @@
 package com.gultendogan.rickandmorty.di
 
-import com.gultendogan.rickandmorty.retrofit.AppRemoteDao
+import com.gultendogan.rickandmorty.data.retrofit.AppRemoteDao
 import com.gultendogan.rickandmorty.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
