@@ -4,13 +4,12 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.gultendogan.rickandmorty.data.entities.Character.toCharacterUIModel
-import com.gultendogan.rickandmorty.data.repo.AppRepository
+import com.gultendogan.rickandmorty.domain.repo.AppRepository
 import com.gultendogan.rickandmorty.domain.uimodel.CharacterUIModel
 import com.gultendogan.rickandmorty.utils.Constants.FIRST_PAGE_INDEX
 import com.gultendogan.rickandmorty.utils.NetworkResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import java.io.IOException

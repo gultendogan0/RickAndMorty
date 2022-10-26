@@ -1,4 +1,4 @@
-package com.gultendogan.rickandmorty.data.repo.pagingsource
+package com.gultendogan.rickandmorty.domain.repo.pagingsource
 
 import android.net.Uri
 import androidx.paging.PagingSource

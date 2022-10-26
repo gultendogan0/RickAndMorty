@@ -1,4 +1,4 @@
-package com.gultendogan.rickandmorty.data.repo
+package com.gultendogan.rickandmorty.domain.repo
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -6,7 +6,7 @@ import androidx.paging.PagingData
 import com.gultendogan.rickandmorty.data.entities.Character.Character
 import com.gultendogan.rickandmorty.data.entities.Character.CharacterResponse
 import com.gultendogan.rickandmorty.data.retrofit.AppRemoteDao
-import com.gultendogan.rickandmorty.data.repo.pagingsource.CharacterPagingSource
+import com.gultendogan.rickandmorty.domain.repo.pagingsource.CharacterPagingSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

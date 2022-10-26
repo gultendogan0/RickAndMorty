@@ -1,16 +1,14 @@
-package com.gultendogan.rickandmorty.ui.character
+package com.gultendogan.rickandmorty.presentation.character
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.gultendogan.rickandmorty.R
 import com.gultendogan.rickandmorty.databinding.FragmentCharactersBinding
-import com.gultendogan.rickandmorty.ui.adapter.CharacterAdapter
+import com.gultendogan.rickandmorty.presentation.adapter.CharacterAdapter
 import com.gultendogan.rickandmorty.utils.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest

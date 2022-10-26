@@ -1,4 +1,4 @@
-package com.gultendogan.rickandmorty.data.repo
+package com.gultendogan.rickandmorty.domain.repo
 
 import androidx.paging.PagingData
 import com.gultendogan.rickandmorty.data.entities.Character.Character

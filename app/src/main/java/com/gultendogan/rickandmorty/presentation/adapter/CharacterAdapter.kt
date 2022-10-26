@@ -1,4 +1,4 @@
-package com.gultendogan.rickandmorty.ui.adapter
+package com.gultendogan.rickandmorty.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.gultendogan.rickandmorty.data.entities.Character.Character
 import com.gultendogan.rickandmorty.databinding.CharacterRowLayoutBinding
 import com.gultendogan.rickandmorty.domain.uimodel.CharacterUIModel
 
