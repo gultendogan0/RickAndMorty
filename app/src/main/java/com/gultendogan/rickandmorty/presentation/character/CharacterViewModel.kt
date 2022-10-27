@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.filter
 import com.gultendogan.rickandmorty.domain.repo.AppRepository
 import com.gultendogan.rickandmorty.domain.uimodel.CharacterUIModel
 import com.gultendogan.rickandmorty.domain.usecase.GetCharacterUIModelUseCase
@@ -38,7 +39,13 @@ class CharacterViewModel @Inject constructor(
         getCharacters()
     }
 
-    private fun getCharacters() {
+    fun searchCharacterName(searchName:String){
+        _characterList.value = _characterList.value.filter {
+            it.name.lowercase().contains(searchName.lowercase())
+        }
+    }
+
+    fun getCharacters() {
         job?.cancel()
         job = getCharacterUIModelUseCase.executeGetCharacters(viewModelScope)
             .onEach { networkResult ->
