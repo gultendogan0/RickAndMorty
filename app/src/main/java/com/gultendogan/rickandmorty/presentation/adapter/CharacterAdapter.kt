@@ -49,7 +49,7 @@ class CharacterAdapter() :
                 TransitionManager.beginDelayedTransition(hb.cardViewRowCharacter, AutoTransition())
                 hb.expandableLayout.show()
                 hb.viewBlackAlpha.hide()
-                hb.ivRowCharacterImage.changeHeight(mContext,280)
+                hb.ivRowCharacterImage.changeHeight(mContext,270)
             }else{
                 TransitionManager.endTransitions(hb.cardViewRowCharacter)
                 hb.expandableLayout.hide()
