@@ -29,6 +29,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:menu="@menu/menu_character_toolbar"
             app:title="Characters"
+            app:titleTextColor="@color/white"
             tools:ignore="RtlSymmetry" />
 
         <androidx.recyclerview.widget.RecyclerView

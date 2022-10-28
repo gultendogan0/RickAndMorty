@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/action_character">
+    app:startDestination="@id/charactersFragment">
 
     <fragment
-        android:id="@+id/action_character"
+        android:id="@+id/charactersFragment"
         android:name="com.gultendogan.rickandmorty.presentation.character.CharactersFragment"
-        android:label="fragment_characters"
-        tools:layout="@layout/fragment_characters" />
+        android:label="CharactersFragment"
+        tools:layout="@layout/fragment_characters">
+        <action
+            android:id="@+id/action_charactersFragment_to_characterFilterBottomSheet"
+            app:destination="@id/characterFilterBottomSheet" />
+    </fragment>
+    <dialog
+        android:id="@+id/characterFilterBottomSheet"
+        android:name="com.gultendogan.rickandmorty.presentation.character.CharacterFilterBottomSheet"
+        android:label="character_filter_bottom_sheet"
+        tools:layout="@layout/character_filter_bottom_sheet" >
+        <action
+            android:id="@+id/action_characterFilterBottomSheet_to_charactersFragment"
+            app:destination="@id/charactersFragment" />
+    </dialog>
 
 </navigation>
