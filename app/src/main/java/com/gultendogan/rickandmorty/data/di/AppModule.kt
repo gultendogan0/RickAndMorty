@@ -1,7 +1,7 @@
 package com.gultendogan.rickandmorty.data.di
 
-import com.gultendogan.rickandmorty.domain.repo.AppRepository
-import com.gultendogan.rickandmorty.domain.repo.AppRepositoryImpl
+import com.gultendogan.rickandmorty.data.repo.AppRepository
+import com.gultendogan.rickandmorty.data.repo.AppRepositoryImpl
 import com.gultendogan.rickandmorty.data.retrofit.AppRemoteDao
 import dagger.Module
 import dagger.Provides

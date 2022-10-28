@@ -32,20 +32,26 @@
             app:titleTextColor="@color/white"
             tools:ignore="RtlSymmetry" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCharacter"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeCharacterFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_gravity="center"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:adapter="@{characterAdapter}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarCharacter" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbarCharacter">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCharacter"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:adapter="@{characterAdapter}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

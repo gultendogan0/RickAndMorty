@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/charactersFragment">
-
     <fragment
         android:id="@+id/charactersFragment"
         android:name="com.gultendogan.rickandmorty.presentation.character.CharactersFragment"
@@ -14,6 +12,25 @@
         <action
             android:id="@+id/action_charactersFragment_to_characterFilterBottomSheet"
             app:destination="@id/characterFilterBottomSheet" />
+        <argument
+            android:name="backFromBottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="status"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+        <argument
+            android:name="species"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+        <argument
+            android:name="gender"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
     </fragment>
     <dialog
         android:id="@+id/characterFilterBottomSheet"
@@ -24,5 +41,4 @@
             android:id="@+id/action_characterFilterBottomSheet_to_charactersFragment"
             app:destination="@id/charactersFragment" />
     </dialog>
-
 </navigation>

@@ -10,23 +10,27 @@ import com.gultendogan.rickandmorty.utils.Constants.FIRST_PAGE_INDEX
 import com.gultendogan.rickandmorty.utils.NetworkResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class GetCharacterUIModelUseCase @Inject constructor(var repo: AppRepository) {
-    fun executeGetCharacters(coroutineScope: CoroutineScope): Flow<NetworkResult<PagingData<CharacterUIModel>>> =
+class GetFilterCharacterUIModelUseCase @Inject constructor(var repo: AppRepository) {
+    fun executeGetFilterCharacters(
+        coroutineScope: CoroutineScope,
+        filter: Map<String, String>
+    ): Flow<NetworkResult<PagingData<CharacterUIModel>>> =
         flow {
             try {
                 emit(NetworkResult.Loading())
                 val response = repo.getCharactersNetworkResult(FIRST_PAGE_INDEX)
-                if(response.characters.isNullOrEmpty()){
+                if (response.characters.isNullOrEmpty()) {
                     emit(NetworkResult.Error(message = "No Rick And Morty Character"))
-                }else{
-                    repo.getCharacters().cachedIn(coroutineScope).collect {
-                        emit(NetworkResult.Success(it.map {
-                                character -> character.toCharacterUIModel()
+                } else {
+                    repo.getFilterCharacters(filter).cachedIn(coroutineScope).collect {
+                        emit(NetworkResult.Success(it.map { character ->
+                            character.toCharacterUIModel()
                         }))
                     }
                 }
