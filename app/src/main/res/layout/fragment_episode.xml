@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,6 +13,7 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:paddingEnd="8dp"
+        app:titleTextColor="@color/white"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="Episodes"
         tools:ignore="RtlSymmetry" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -53,7 +54,6 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seasons_txt">
-
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteSeason"
                 android:layout_width="wrap_content"
@@ -61,17 +61,17 @@
                 android:layout_weight="1"
                 android:inputType="none"
                 android:text="Select Season" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/seasons_txt2"
+            android:id="@+id/episodes_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Episodes"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/textInputLayoutEpisode"
             app:layout_constraintTop_toTopOf="@+id/seasons_txt" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutEpisode"
@@ -84,7 +84,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textInputLayoutSeason"
-            app:layout_constraintTop_toBottomOf="@+id/seasons_txt2">
+            app:layout_constraintTop_toBottomOf="@+id/episodes_txt">
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteEpisode"
@@ -93,7 +93,6 @@
                 android:layout_weight="1"
                 android:inputType="none"
                 android:text="Select Episode" />
-
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -109,5 +108,4 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
