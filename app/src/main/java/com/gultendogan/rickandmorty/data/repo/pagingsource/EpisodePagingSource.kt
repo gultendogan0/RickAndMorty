@@ -3,22 +3,21 @@ package com.gultendogan.rickandmorty.data.repo.pagingsource
 import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.gultendogan.rickandmorty.data.entities.Character.Character
+import com.gultendogan.rickandmorty.data.entities.episode.Episode
 import com.gultendogan.rickandmorty.data.retrofit.AppRemoteDao
 import com.gultendogan.rickandmorty.utils.Constants.FIRST_PAGE_INDEX
 import javax.inject.Inject
 
-class CharacterPagingSource @Inject constructor(var remoteDao: AppRemoteDao) :
-    PagingSource<Int, Character>() {
-    override fun getRefreshKey(state: PagingState<Int, Character>): Int? {
+class EpisodePagingSource @Inject constructor(var remoteDao: AppRemoteDao) : PagingSource<Int,Episode>() {
+    override fun getRefreshKey(state: PagingState<Int, Episode>): Int? {
         return state.anchorPosition
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Episode> {
         return try {
-            val nextPage: Int = params.key ?: FIRST_PAGE_INDEX
-            val response = remoteDao.getAllCharacters(nextPage)
-            var nextPageNumber: Int? = null
+            val nextPage : Int = params.key ?: FIRST_PAGE_INDEX
+            val response = remoteDao.getAllEpisodes(nextPage)
+            var nextPageNumber : Int? = null
 
             val totalPageCount = response.info.pages
             nextPageNumber = if(nextPage == totalPageCount){
@@ -30,13 +29,13 @@ class CharacterPagingSource @Inject constructor(var remoteDao: AppRemoteDao) :
             }
 
             LoadResult.Page(
-                data = response.characters,
+                data = response.episodes,
                 prevKey = null,
                 nextKey = nextPageNumber
             )
-
-        } catch (e: Exception) {
+        }catch (e : Exception){
             LoadResult.Error(e)
         }
+
     }
 }

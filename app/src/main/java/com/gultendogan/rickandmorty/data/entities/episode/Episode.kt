@@ -1,4 +1,4 @@
-package com.gultendogan.rickandmorty.data.entities.entities.episode
+package com.gultendogan.rickandmorty.data.entities.episode
 
 import com.gultendogan.rickandmorty.domain.uimodel.EpisodeUIModel
 import com.google.gson.annotations.SerializedName

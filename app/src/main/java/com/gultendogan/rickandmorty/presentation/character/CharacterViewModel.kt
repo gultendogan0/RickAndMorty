@@ -26,26 +26,29 @@ class CharacterViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _characterList = MutableStateFlow<PagingData<CharacterUIModel>>(PagingData.empty())
-    val characterList: StateFlow<PagingData<CharacterUIModel>> = _characterList
+    val characterList = _characterList.asStateFlow()
+
     private val _characterLoading = MutableStateFlow(false)
-    val characterLoading: StateFlow<Boolean> = _characterLoading
+    val characterLoading = _characterLoading.asStateFlow()
+
     private val _characterError = MutableStateFlow("")
-    val characterError: StateFlow<String> = _characterError
+    val characterError = _characterError.asStateFlow()
 
     private val _characterStatus = MutableStateFlow("Alive")
-    val characterStatus = _characterStatus.asStateFlow()
+    private val characterStatus = _characterStatus.asStateFlow()
 
     private val _characterSpecies = MutableStateFlow("Human")
-    val characterSpecies = _characterSpecies.asStateFlow()
+    private val characterSpecies = _characterSpecies.asStateFlow()
 
     private val _characterGender = MutableStateFlow("Male")
-    val characterGender = _characterGender.asStateFlow()
+    private val characterGender = _characterGender.asStateFlow()
 
     private val _filterQueryMap = MutableStateFlow<Map<String,String>?>(null)
     private val filterQueryMap = _filterQueryMap.asStateFlow()
 
-    val backFromBottomSheet : MutableLiveData<Boolean> = MutableLiveData()
     private var job: Job? = null
+
+    val backFromBottomSheet : MutableLiveData<Boolean> = MutableLiveData()
 
     init {
         getCharacters()

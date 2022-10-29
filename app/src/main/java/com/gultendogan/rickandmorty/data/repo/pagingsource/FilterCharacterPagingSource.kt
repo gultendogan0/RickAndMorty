@@ -22,15 +22,21 @@ class FilterCharacterPagingSource @Inject constructor(var remoteDao: AppRemoteDa
             val response = remoteDao.getFilterCharacters(query = nextPage, filterQuery = filter)
             var nextPageNumber:Int? = null
 
-            val uri = Uri.parse(response.info.next)
-            val nextPageQuery = uri.getQueryParameter("page")
-            nextPageNumber = nextPageQuery!!.toInt()
+            val totalPageCount = response.info.pages
+            nextPageNumber = if(nextPage == totalPageCount){
+                null
+            }else{
+                val uri = Uri.parse(response.info.next)
+                val nextPageQuery = uri.getQueryParameter("page")
+                nextPageQuery?.toInt()
+            }
 
             LoadResult.Page(
                 data = response.characters,
                 prevKey = null,
                 nextKey = nextPageNumber
             )
+
         }catch (e : Exception){
             LoadResult.Error(e)
         }
