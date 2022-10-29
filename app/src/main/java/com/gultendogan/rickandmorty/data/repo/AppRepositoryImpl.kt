@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.gultendogan.rickandmorty.data.entities.Character.Character
 import com.gultendogan.rickandmorty.data.entities.Character.CharacterResponse
+import com.gultendogan.rickandmorty.data.repo.pagingsource.FilterEpisodePagingSource
 import com.gultendogan.rickandmorty.data.entities.episode.Episode
 import com.gultendogan.rickandmorty.data.entities.episode.EpisodeResponse
 import com.gultendogan.rickandmorty.data.repo.pagingsource.CharacterPagingSource
@@ -31,6 +32,12 @@ class AppRepositoryImpl @Inject constructor(var remoteDao: AppRemoteDao) : AppRe
         return Pager(
             config = PagingConfig(20),
             pagingSourceFactory = { FilterCharacterPagingSource(remoteDao,filterQuery)}).flow
+    }
+
+    override suspend fun getFilterEpisodes(filterQuery: String): Flow<PagingData<Episode>> {
+        return Pager(
+            config = PagingConfig(20),
+            pagingSourceFactory = { FilterEpisodePagingSource(remoteDao,filterQuery)}).flow
     }
 
     override suspend fun getCharactersNetworkResult(pageNumber: Int): CharacterResponse {
