@@ -13,6 +13,7 @@ import com.gultendogan.rickandmorty.databinding.FragmentEpisodeBinding
 import com.gultendogan.rickandmorty.presentation.adapter.EpisodeAdapter
 import com.gultendogan.rickandmorty.utils.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
@@ -21,31 +22,41 @@ class EpisodesFragment : Fragment(R.layout.fragment_episode) {
     private val binding by viewBinding(FragmentEpisodeBinding::bind)
     private val viewModel: EpisodeViewModel by viewModels()
     private val mAdapter by lazy { EpisodeAdapter(viewModel) }
+    private lateinit var selectedSeason : String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.episodeAdapter = mAdapter
 
-        dropdownArrayAdapter()
+        viewModel.getEpisodes()
+        episodeListCollect()
+        setDropdownArrayAdapter()
+    }
 
+    private fun episodeListCollect(){
         lifecycleScope.launch {
-            viewModel.episodeList.collect{
+            viewModel.episodeList.collectLatest {
                 mAdapter.submitData(it)
             }
         }
     }
 
-    private fun dropdownArrayAdapter() {
+    private fun setDropdownArrayAdapter() {
         viewModel.setHashMapSeasonAndEpisode()
         var episodeArrayAdapter : ArrayAdapter<String>
         val seasonArrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_season_item, viewModel.seasonListHashMap)
         binding.autoCompleteSeason.setText(R.string.select_season)
         binding.autoCompleteEpisode.setText(R.string.select_episode)
         binding.autoCompleteSeason.setAdapter(seasonArrayAdapter)
+
         binding.autoCompleteSeason.setOnItemClickListener { _, _, i, _ ->
+            binding.autoCompleteEpisode.setText(R.string.select_episode)
+            selectedSeason = seasonArrayAdapter.getItem(i).toString()
+
             if(viewModel.episodeListHashMap.contains("Episode 11")){
                 viewModel.episodeListHashMap.remove("Episode 11")
             }
+
             episodeArrayAdapter = if(seasonArrayAdapter.getItem(i) == "Season 1"){
                 viewModel.episodeListHashMap.add("Episode 11")
                 ArrayAdapter(requireContext(), R.layout.dropdown_episode_item, viewModel.episodeListHashMap)
@@ -53,11 +64,32 @@ class EpisodesFragment : Fragment(R.layout.fragment_episode) {
                 ArrayAdapter(requireContext(), R.layout.dropdown_episode_item, viewModel.episodeListHashMap)
             }
             binding.autoCompleteEpisode.setAdapter(episodeArrayAdapter)
+            selectedEpisode(episodeArrayAdapter)
+        }
+    }
+
+    private fun selectedEpisode(episodeArrayAdapter: ArrayAdapter<String>){
+        var seasonCode = ""
+        var episodeCode = ""
+        viewModel.seasonHashMap.forEach {
+            if(selectedSeason == it.value){
+                seasonCode = it.key //örn: S02
+                viewModel.getFilterEpisodes(seasonCode)
+            }
+        }
+
+        binding.autoCompleteEpisode.setOnItemClickListener { adapterView, view, i, l ->
+            viewModel.episodeHashMap.forEach {
+                if(episodeArrayAdapter.getItem(i) == it.value){
+                    episodeCode = it.key
+                    viewModel.getFilterEpisodes("$seasonCode$episodeCode")
+                }
+            }
         }
     }
 
     override fun onStart() {
         super.onStart()
-        dropdownArrayAdapter()
+        setDropdownArrayAdapter()
     }
 }
