@@ -12,7 +12,9 @@ import com.gultendogan.rickandmorty.data.repo.pagingsource.CharacterPagingSource
 import com.gultendogan.rickandmorty.data.repo.pagingsource.EpisodePagingSource
 import com.gultendogan.rickandmorty.data.repo.pagingsource.FilterCharacterPagingSource
 import com.gultendogan.rickandmorty.data.retrofit.AppRemoteDao
+import com.gultendogan.rickandmorty.utils.NetworkResult
 import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
 import javax.inject.Inject
 
 class AppRepositoryImpl @Inject constructor(var remoteDao: AppRemoteDao) : AppRepository {
@@ -46,5 +48,9 @@ class AppRepositoryImpl @Inject constructor(var remoteDao: AppRemoteDao) : AppRe
 
     override suspend fun getEpisodesNetworkResult(pageNumber: Int): EpisodeResponse {
         return  remoteDao.getAllEpisodes(pageNumber)
+    }
+
+    override suspend fun getCharacterByIdList(ids: String): List<Character> {
+        return remoteDao.getCharacterByIdList(ids)
     }
 }

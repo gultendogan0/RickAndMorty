@@ -1,9 +1,13 @@
 package com.gultendogan.rickandmorty.data.retrofit
 
+import com.gultendogan.rickandmorty.data.entities.Character.Character
 import com.gultendogan.rickandmorty.data.entities.Character.CharacterResponse
 import com.gultendogan.rickandmorty.data.entities.episode.EpisodeResponse
+import com.gultendogan.rickandmorty.utils.NetworkResult
+import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
@@ -20,4 +24,7 @@ interface AppRemoteDao {
 
     @GET("episode")
     suspend fun getFilterEpisodes(@Query("page") query: Int, @Query("episode") filter: String): EpisodeResponse
+
+    @GET("character/{ids}")
+    suspend fun getCharacterByIdList(@Path("ids") ids: String): List<Character>
 }
