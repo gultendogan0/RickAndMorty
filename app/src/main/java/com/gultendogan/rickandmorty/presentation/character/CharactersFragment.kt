@@ -1,5 +1,6 @@
 package com.gultendogan.rickandmorty.presentation.character
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -8,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -17,8 +19,10 @@ import androidx.navigation.fragment.navArgs
 import com.gultendogan.rickandmorty.R
 import com.gultendogan.rickandmorty.databinding.FragmentCharactersBinding
 import com.gultendogan.rickandmorty.presentation.adapter.CharacterAdapter
+import com.gultendogan.rickandmorty.utils.actionFragment
 import com.gultendogan.rickandmorty.utils.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -33,6 +37,7 @@ class CharactersFragment : Fragment(R.layout.fragment_characters), SearchView.On
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+        viewModel.backFromBottomSheet.value = navArgs.backFromBottomSheet
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,8 +48,20 @@ class CharactersFragment : Fragment(R.layout.fragment_characters), SearchView.On
         setupNavArgs()
         swipeRefresh()
         observe()
+        eventCollect()
         characterListCollect()
 
+    }
+
+    private fun eventCollect() = lifecycleScope.launch {
+        viewModel.characterLoading.collectLatest {
+            handleProgressBar(it)
+        }
+    }
+
+    private fun handleProgressBar(isLoading : Boolean) {
+        binding.progressBarCharacter.isVisible = isLoading
+        binding.rvCharacter.isVisible = !isLoading
     }
 
     private fun characterListCollect(){
@@ -72,11 +89,10 @@ class CharactersFragment : Fragment(R.layout.fragment_characters), SearchView.On
         }
     }
 
-    private fun setupNavArgs(){
-        viewModel.backFromBottomSheet.value = navArgs.backFromBottomSheet
-        navArgs.status?.let { viewModel.changeValueCharacterStatus(it)}
-        navArgs.species?.let { viewModel.changeValueCharacterSpecies(it)}
-        navArgs.gender?.let { viewModel.changeValueCharacterGender(it)}
+    private fun setupNavArgs() {
+        navArgs.status?.let { viewModel.changeValueCharacterStatus(it) }
+        navArgs.species?.let { viewModel.changeValueCharacterSpecies(it) }
+        navArgs.gender?.let { viewModel.changeValueCharacterGender(it) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -90,9 +106,14 @@ class CharactersFragment : Fragment(R.layout.fragment_characters), SearchView.On
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.action_filter -> {
-                findNavController().navigate(R.id.action_charactersFragment_to_characterFilterBottomSheet)
+                Navigation.actionFragment(
+                    requireView(),
+                    R.id.action_charactersFragment_to_characterFilterBottomSheet
+                )
             }
-            R.id.action_refresh ->{ viewModel.backFromBottomSheet.value = false }
+            R.id.action_refresh -> {
+                viewModel.backFromBottomSheet.value = false
+            }
         }
         return super.onOptionsItemSelected(item)
     }

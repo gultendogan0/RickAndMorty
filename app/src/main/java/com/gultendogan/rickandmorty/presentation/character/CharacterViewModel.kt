@@ -17,6 +17,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
@@ -115,7 +118,7 @@ class CharacterViewModel @Inject constructor(
                             }
                         }
                         is NetworkResult.Error -> {
-                            _characterError.value = networkResult.message ?: "Error! No Data"
+                            _characterError.value = networkResult.message ?: "Not Found Character"
                             _characterLoading.value = false
                         }
                     }

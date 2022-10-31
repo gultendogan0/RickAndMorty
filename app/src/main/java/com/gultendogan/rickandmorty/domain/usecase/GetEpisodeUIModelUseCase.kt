@@ -33,7 +33,7 @@ class GetEpisodeUIModelUseCase @Inject constructor(var repo:AppRepository){
         } catch (e: HttpException) {
             emit(NetworkResult.Error(message = e.localizedMessage ?: "Error!"))
         } catch (e: IOException) {
-            emit(NetworkResult.Error(message = "Could not reach URL"))
+            emit(NetworkResult.Error(message = "Check Your Internet"))
         }
     }
 }
