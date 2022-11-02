@@ -10,7 +10,6 @@ import com.gultendogan.rickandmorty.R
 import com.gultendogan.rickandmorty.databinding.EpisodeRowLayoutBinding
 import com.gultendogan.rickandmorty.domain.uimodel.EpisodeUIModel
 import com.gultendogan.rickandmorty.presentation.episode.EpisodeItemClickListener
-import com.gultendogan.rickandmorty.presentation.episode.EpisodeViewModel
 
 class EpisodeAdapter(var listener: EpisodeItemClickListener) :
     PagingDataAdapter<EpisodeUIModel, EpisodeAdapter.EpisodeViewHolder>(DiffUtilCallBack()) {

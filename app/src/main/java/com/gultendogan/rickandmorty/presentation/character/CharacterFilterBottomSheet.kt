@@ -1,13 +1,11 @@
 package com.gultendogan.rickandmorty.presentation.character
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.gultendogan.rickandmorty.R
 import com.gultendogan.rickandmorty.databinding.CharacterFilterBottomSheetBinding
 import com.gultendogan.rickandmorty.utils.Constants.GENDER_DEFAULT
 import com.gultendogan.rickandmorty.utils.Constants.SPECIES_DEFAULT

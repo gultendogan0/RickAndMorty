@@ -7,7 +7,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.gultendogan.rickandmorty.R

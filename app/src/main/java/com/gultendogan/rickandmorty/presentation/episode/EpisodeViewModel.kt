@@ -4,8 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
-import androidx.paging.filter
-import com.gultendogan.rickandmorty.data.repo.AppRepository
 import com.gultendogan.rickandmorty.domain.uimodel.EpisodeUIModel
 import com.gultendogan.rickandmorty.domain.usecase.GetEpisodeUIModelUseCase
 import com.gultendogan.rickandmorty.domain.usecase.GetFilterEpisodeUIModelUseCase

@@ -65,7 +65,7 @@
                 <View
                     android:id="@+id/view_row_status_color"
                     android:layout_width="match_parent"
-                    android:layout_height="12dp"
+                    android:layout_height="16dp"
                     android:layout_weight="1"
                     changeColorStatus="@{character.status}"
                     android:background="#4CAF50" />
@@ -75,6 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:padding="10dp"
                     android:text="@{character.name}"
                     android:textSize="22sp"

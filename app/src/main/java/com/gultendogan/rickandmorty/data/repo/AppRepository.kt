@@ -5,7 +5,6 @@ import com.gultendogan.rickandmorty.data.entities.Character.Character
 import com.gultendogan.rickandmorty.data.entities.Character.CharacterResponse
 import com.gultendogan.rickandmorty.data.entities.episode.Episode
 import com.gultendogan.rickandmorty.data.entities.episode.EpisodeResponse
-import com.gultendogan.rickandmorty.utils.NetworkResult
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 

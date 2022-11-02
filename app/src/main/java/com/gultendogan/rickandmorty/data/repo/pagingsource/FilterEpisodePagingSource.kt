@@ -3,7 +3,6 @@ package com.gultendogan.rickandmorty.data.repo.pagingsource
 import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.gultendogan.rickandmorty.data.entities.Character.Character
 import com.gultendogan.rickandmorty.data.entities.episode.Episode
 import com.gultendogan.rickandmorty.data.retrofit.AppRemoteDao
 import com.gultendogan.rickandmorty.utils.Constants

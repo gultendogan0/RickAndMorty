@@ -12,12 +12,7 @@ import com.gultendogan.rickandmorty.data.repo.pagingsource.CharacterPagingSource
 import com.gultendogan.rickandmorty.data.repo.pagingsource.EpisodePagingSource
 import com.gultendogan.rickandmorty.data.repo.pagingsource.FilterCharacterPagingSource
 import com.gultendogan.rickandmorty.data.retrofit.AppRemoteDao
-import com.gultendogan.rickandmorty.utils.NetworkResult
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.withContext
-import retrofit2.HttpException
-import retrofit2.Response
 import javax.inject.Inject
 
 class AppRepositoryImpl @Inject constructor(var remoteDao: AppRemoteDao) : AppRepository {

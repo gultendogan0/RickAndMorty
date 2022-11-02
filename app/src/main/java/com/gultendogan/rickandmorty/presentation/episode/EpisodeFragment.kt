@@ -1,7 +1,6 @@
 package com.gultendogan.rickandmorty.presentation.episode
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment

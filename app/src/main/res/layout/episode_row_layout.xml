@@ -23,9 +23,8 @@
             android:layout_height="wrap_content"
             android:onClick="@{()->listener.onItemClickListener(episode)}"
             android:layout_margin="12dp"
-            app:cardBackgroundColor="#9193CC"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -45,9 +44,9 @@
                     android:layout_marginTop="16dp"
                     tools:text="EPISODE 1"
                     android:text="@{`EPISODE ` + String.valueOf(episode.id)}"
-                    android:textColor="@color/primaryDark"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/gray"
+                    android:textSize="20sp"
+                    android:textStyle="bold|normal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -59,6 +58,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
                     tools:text="S01E01"
+                    android:textStyle="bold"
                     android:text="@{episode.episode}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -71,13 +71,12 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/kalam"
                     android:gravity="center_vertical|center_horizontal"
                     android:maxLines="3"
                     tools:text="Pilot"
                     android:text="@{episode.name}"
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     app:layout_constraintBottom_toTopOf="@+id/tv_row_season_episode"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -85,12 +84,14 @@
 
                 <View
                     android:id="@+id/view"
-                    android:layout_width="150dp"
-                    android:layout_height="2dp"
-                    android:background="@color/primaryDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="20dp"
+                    android:background="@color/gray"
                     app:layout_constraintEnd_toEndOf="@+id/tv_row_episode"
                     app:layout_constraintStart_toStartOf="@+id/tv_row_episode"
                     app:layout_constraintTop_toBottomOf="@+id/tv_row_episode" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

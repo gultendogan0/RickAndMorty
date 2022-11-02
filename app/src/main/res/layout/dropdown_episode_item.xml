@@ -5,6 +5,6 @@
     android:padding="8dp"
     android:paddingStart="14dp"
     android:text="TextView"
-    android:textColor="@color/black"
+    android:textColor="@color/gray"
     android:textSize="16sp"
-    android:textStyle="bold" />
+    android:textStyle="bold|normal" />

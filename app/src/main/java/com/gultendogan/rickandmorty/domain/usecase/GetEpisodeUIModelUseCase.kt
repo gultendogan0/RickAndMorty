@@ -3,7 +3,6 @@ package com.gultendogan.rickandmorty.domain.usecase
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.gultendogan.rickandmorty.data.entities.Character.toCharacterUIModel
 import com.gultendogan.rickandmorty.data.entities.episode.toEpisodeUIModel
 import com.gultendogan.rickandmorty.data.repo.AppRepository
 import com.gultendogan.rickandmorty.domain.uimodel.EpisodeUIModel
