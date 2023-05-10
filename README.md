@@ -2,13 +2,13 @@
 
 
 #### Project Features
- - MVVM  <br>
- - Dagger-Hilt <br>
- - Retrofit <br>
- - Coroutine <br>
- - LiveData <br>
- - DataBinding <br>
- - Navigation Component <br>
+ :heavy_check_mark: MVVM  <br>
+ :heavy_check_mark: Dagger-Hilt <br>
+ :heavy_check_mark: Retrofit <br>
+ :heavy_check_mark: Coroutine <br>
+ :heavy_check_mark: LiveData <br>
+ :heavy_check_mark: DataBinding <br>
+ :heavy_check_mark: Navigation Component <br>
 
 
 #### App Screenshots
